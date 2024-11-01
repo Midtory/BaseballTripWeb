@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,16 +59,22 @@ public class PlanController {
 		return ResponseEntity.created(null).build();
 	}
 	
-	@GetMapping("/load")
-	public ResponseEntity<?> loadPlan() {
+	@GetMapping("/load/{planId}")
+	public ResponseEntity<?> loadPlan(@PathVariable(name = "planId") int planId) {
 		
 		ResponsePlanDetailDto responsePlanDetailDto = null;
 		
 		return ResponseEntity.ok(responsePlanDetailDto);
 	}
 	
-	@PatchMapping("/share")
-	public ResponseEntity<?> sharePlan() {
+	@PatchMapping("/share/{planId}")
+	public ResponseEntity<?> sharePlan(@PathVariable(name = "planId") int planId) {
+		
+		return ResponseEntity.ok(null);
+	}
+	
+	@PatchMapping("/noshare/{planId}")
+	public ResponseEntity<?> cancleSharePlan(@PathVariable(name = "planId") int planId) {
 		
 		return ResponseEntity.ok(null);
 	}
