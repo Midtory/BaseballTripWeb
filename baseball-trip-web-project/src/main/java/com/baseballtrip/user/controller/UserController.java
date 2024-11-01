@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.baseballtrip.user.dto.RequestSignUpDto;
 import com.baseballtrip.user.service.UserService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,22 +27,14 @@ public class UserController {
 	// 회원가입
 	@PostMapping("/signUp")
 	@Tag(name = "회원가입", description = "회원가입 창의 폼 데이터를 기반으로 유저 테이블에 등록합니다.")
-	public ResponseEntity<?> signUp() {
+	public ResponseEntity<?> signUp(RequestSignUpDto requestSignUpDto) {
 
 		return ResponseEntity.ok().build();
 	}
 
-	//
 	@GetMapping("/checkEamil/{email}")
 	@Tag(name = "이메일 중복 확인", description = "유저 테이블에 해당 이메일로 등록된 유저가 존재하는 지 확인합니다.")
 	public ResponseEntity<?> checkEmail(@PathVariable(name = "email") String email) {
-
-		return ResponseEntity.ok().build();
-	}
-
-	@GetMapping("/checkId/{id}")
-	@Tag(name = "아이디 중복 확인", description = "유저 테이블에 해당 아이디로 등록된 유저가 존재하는 지 확인합니다.")
-	public ResponseEntity<?> checkId(@PathVariable(name = "id") String id) {
 
 		return ResponseEntity.ok().build();
 	}
@@ -61,7 +54,7 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	@Tag(name = "로그인", description = "로그인 폼의 아이디, 비밀번호를 받아 유저가 존재하는 지 확인합니다.")
+	@Tag(name = "로그인", description = "로그인 폼의 이메일, 비밀번호를 받아 유저가 존재하는 지 확인합니다.")
 	public ResponseEntity<?> login() {
 
 		return ResponseEntity.ok().build();
